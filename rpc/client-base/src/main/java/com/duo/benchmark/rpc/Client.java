@@ -21,9 +21,7 @@ public class Client {
     public static void main(String[] args) throws Exception {
         BenchmarkClient client = new BenchmarkClient();
         try {
-            for (int i = 0; i < 100; i++) {
-                LOGGER.info("Service: {}",  client.echo());
-            }
+            LOGGER.info("Service: {}",  client.echo());
         } catch (Exception e) {
             e.printStackTrace();
         }
