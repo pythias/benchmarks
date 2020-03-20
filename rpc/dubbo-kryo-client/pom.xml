@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>com.duo.benchmark</groupId>
-            <artifactId>client-base</artifactId>
+            <artifactId>base-client</artifactId>
         </dependency>
     </dependencies>
 

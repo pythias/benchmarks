@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>com.duo.benchmark</groupId>
-            <artifactId>client-base</artifactId>
+            <artifactId>base-client</artifactId>
         </dependency>
     </dependencies>
 
@@ -47,7 +47,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.duo.benchmark.rpc.Client</mainClass>
+                            <mainClass>com.duo.benchmark.rpc.motan.Client</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

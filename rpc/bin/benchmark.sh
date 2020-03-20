@@ -11,7 +11,7 @@ usage() {
 }
 
 build() {
-    mvn --projects benchmark-base,server-base,client-base,${PROJECT_DIR} clean package
+    mvn --projects base-benchmark,base-server,base-client,${PROJECT_DIR} clean package
 }
 
 java_options() {
@@ -28,7 +28,7 @@ java_options() {
 run() {
     if [ -d "${PROJECT_DIR}/target" ]; then
         JAR=`find ${PROJECT_DIR}/target/*.jar | head -n 1`
-        CMD="java ${JAVA_OPTIONS} -Dserver.host=${SERVER} -Dserver.port=${PORT} -jar ${JAR} --output=${OUTPUT} ${OTHERARGS}"
+        CMD="java ${JAVA_OPTIONS} -Dserver.host=${SERVER} -Dserver.port=${PORT} -Djmh.output=${OUTPUT} ${OTHERARGS} -jar ${JAR}"
         echo
         echo "Run at ${PROJECT_DIR}, command is: ${CMD}"
         echo

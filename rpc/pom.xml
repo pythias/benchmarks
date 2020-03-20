@@ -8,13 +8,15 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>benchmark-base</module>
-        <module>client-base</module>
-        <module>server-base</module>
+        <module>base-benchmark</module>
+        <module>base-server</module>
+        <module>base-client</module>
         <module>dubbo-kryo-client</module>
         <module>dubbo-kryo-server</module>
         <module>motan-client</module>
         <module>motan-server</module>
+        <module>grpc-server</module>
+        <module>grpc-client</module>
     </modules>
 
     <name>rpc-benchmark</name>
@@ -33,6 +35,9 @@
         <version.kryo>4.0.2</version.kryo>
         <version.motan>1.1.7</version.motan>
         <version.spring>5.2.4.RELEASE</version.spring>
+        <version.grpc>1.28.0</version.grpc>
+        <version.protobuf>3.11.0</version.protobuf>
+        <version.protoc>3.11.0</version.protoc>
     </properties>
 
     <dependencies>
@@ -49,6 +54,21 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-netty-shaded</artifactId>
+                <version>${version.grpc}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-protobuf</artifactId>
+                <version>${version.grpc}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-stub</artifactId>
+                <version>${version.grpc}</version>
+            </dependency>
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
@@ -118,17 +138,17 @@
             <!-- projects -->
             <dependency>
                 <groupId>com.duo.benchmark</groupId>
-                <artifactId>benchmark-base</artifactId>
+                <artifactId>base-benchmark</artifactId>
                 <version>${version.project}</version>
             </dependency>
             <dependency>
                 <groupId>com.duo.benchmark</groupId>
-                <artifactId>client-base</artifactId>
+                <artifactId>base-client</artifactId>
                 <version>${version.project}</version>
             </dependency>
             <dependency>
                 <groupId>com.duo.benchmark</groupId>
-                <artifactId>server-base</artifactId>
+                <artifactId>base-server</artifactId>
                 <version>${version.project}</version>
             </dependency>
         </dependencies>
@@ -144,6 +164,14 @@
                     <configuration>
                         <source>${java.source}</source>
                         <target>${java.target}</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
                         <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_package = "com.duo.benchmark.rpc.grpc.service";
+
+service EchoService {
+    rpc echo (EchoRequest) returns (EchoReply) {}
+}
+
+message EchoRequest {
+    string message = 1;
+}
+
+message EchoReply {
+    string message = 1;
+}
